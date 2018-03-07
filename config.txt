@@ -1,0 +1,5 @@
+
+This is the documentation for how to version control dotfiles across
+multiple systems via git and the config alias.
+
+https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/
