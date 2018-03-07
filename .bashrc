@@ -31,3 +31,5 @@ fi
 # settings common to all distributions
 
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+
+export PATH=$PATH:$HOME/common-bin
