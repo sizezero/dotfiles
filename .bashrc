@@ -12,6 +12,13 @@ if [[ -d /data/data/com.termux ]]; then
     IS_TERMUX=true
 fi
 
+IS_UBUNTU_HECTOR=false
+if [[ -f /etc/os-release ]]; then
+    grep -q '^ID=ubuntu$' /etc/os-release
+    if [[ $? -eq 0 && $(hostname) == 'hector' ]]; then
+	IS_UBUNTU_HECTOR=true
+    fi
+fi
 
 if [[ $IS_OPENSUSE == true ]]; then
 
@@ -23,9 +30,16 @@ if [[ $IS_OPENSUSE == true ]]; then
     umask 022
 elif [[ $IS_TERMUX == true ]]; then
     export PATH=$HOME/bin:$PATH
+    # prompt taken from ubuntu
+    #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+elif [[ $IS_UBUNTU_HECTOR == true ]]; then
+    force_color_prompt=yes
+    source /etc/skel/.bashrc
 else
     # generic distribution
-    set foo=bar
+
+    # it looks like an else clause needs some command
+    true
 fi
 
 # settings common to all distributions
