@@ -1,6 +1,6 @@
 
 IS_OPENSUSE=false
-if [[ -d /etc/resolv.conf ]]; then
+if [[ -f /etc/resolv.conf ]]; then
     grep -q '^domain pc.scharp.org$' /etc/resolv.conf
     if [[ $? -eq 0 ]]; then
 	IS_OPENSUSE=true
