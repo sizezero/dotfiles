@@ -28,17 +28,31 @@ if [[ $IS_OPENSUSE == true ]]; then
     export PATH=$HOME/bin/linux:$HOME/bin:$JAVA_HOME/bin:/scharp/xapps/fw/bin:$PATH
 
     umask 022
+
 elif [[ $IS_TERMUX == true ]]; then
+
     export PATH=$HOME/bin:$PATH
     # prompt taken from ubuntu
     #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+
 elif [[ $IS_UBUNTU_HECTOR == true ]]; then
+
     force_color_prompt=yes
     source /etc/skel/.bashrc
+
+    # set PATH so it includes user's private bin if it exists
+    if [ -d "$HOME/bin" ] ; then
+	PATH="$HOME/bin:$PATH"
+    fi
+
+    # add android
+    ANDROID_HOME=$HOME/usr/android-sdk/sdk
+    PATH="$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH"
+
 else
     # generic distribution
 
-    # it looks like an else clause needs some command
+    # it looks like an else clause needs at least one command
     true
 fi
 
