@@ -20,6 +20,11 @@ if [[ -f /etc/os-release ]]; then
     fi
 fi
 
+IS_DREAMHOST_KLEEMANN=false
+if [[ -f $HOME/IS_DREAMHOST_KLEEMANN ]]; then
+    IS_DREAMHOST_KLEEMANN=true
+fi
+
 if [[ $IS_OPENSUSE == true ]]; then
 
     source /usr/local/admin/defaults/bashrc.sles
@@ -50,6 +55,13 @@ elif [[ $IS_UBUNTU_HECTOR == true ]]; then
     # add android
     ANDROID_HOME=$HOME/usr/android-sdk/sdk
     PATH="$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH"
+
+elif [[ $IS_DREAMHOST_KLEEMANN == true ]]; then
+
+    export PATH=$HOME/bin:$HOME/opt/python-2.7.14/bin:$PATH
+    umask 002
+    PS1='[\h]$ '
+    export TMPDIR="$HOME/tmp"
 
 else
     # generic distribution
