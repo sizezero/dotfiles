@@ -7,13 +7,13 @@ This is the documentation for how to version control dotfiles across multiple sy
 
 See the above post for how to setup the initial git repo.
 
-To use the dotfiles on a new linux installation perform the following:
+To use these dotfiles on a new linux installation perform the following:
 
 ```bash
 git clone --bare https://github.com/sizezero/dotfiles.git ~/.cfg
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 config checkout
-<if the above command fails, delete or backup any conflicting files and retry>
+#if the above command fails, delete or backup any conflicting files and retry
 config config --local status.showUntrackedFiles no
 ```
 
