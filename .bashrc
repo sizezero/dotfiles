@@ -60,7 +60,7 @@ elif [[ $IS_DREAMHOST_KLEEMANN == true ]]; then
 
     export PATH=$HOME/bin:$HOME/opt/python-2.7.14/bin:$PATH
     umask 002
-    PS1='[\h]$ '
+    PS1='[\h] \w\\$ '
     export TMPDIR="$HOME/tmp"
 
 else
