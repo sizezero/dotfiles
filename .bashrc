@@ -1,31 +1,29 @@
 
-IS_OPENSUSE=false
+export WHICH_LINUX=generic
+
 if [[ -f /etc/resolv.conf ]]; then
     grep -q '^domain pc.scharp.org$' /etc/resolv.conf
     if [[ $? -eq 0 ]]; then
-	IS_OPENSUSE=true
+	export WHICH_LINUX=scharp
     fi
 fi
 
-IS_TERMUX=false
 if [[ -d /data/data/com.termux ]]; then
-    IS_TERMUX=true
+    export WHICH_LINUX=termux
 fi
 
-IS_UBUNTU_HECTOR=false
 if [[ -f /etc/os-release ]]; then
     grep -q '^ID=ubuntu$' /etc/os-release
     if [[ $? -eq 0 && $(hostname) == 'hector' ]]; then
-	IS_UBUNTU_HECTOR=true
+	export WHICH_LINUX=hector
     fi
 fi
 
-IS_DREAMHOST_KLEEMANN=false
 if [[ -f $HOME/IS_DREAMHOST_KLEEMANN ]]; then
-    IS_DREAMHOST_KLEEMANN=true
+    export WHICH_LINUX=dreamhost
 fi
 
-if [[ $IS_OPENSUSE == true ]]; then
+if [[ $WHICH_LINUX == "scharp" ]]; then
 
     source /usr/local/admin/defaults/bashrc.sles
 
@@ -34,7 +32,7 @@ if [[ $IS_OPENSUSE == true ]]; then
 
     umask 022
 
-elif [[ $IS_TERMUX == true ]]; then
+elif [[ $WHICH_LINUX == "termux" ]]; then
 
     export PATH=$HOME/bin:$PATH
     # prompt taken from ubuntu
@@ -42,7 +40,7 @@ elif [[ $IS_TERMUX == true ]]; then
     # above doesn't work so trying a dirt simple one
     PS1='\w\\$ '
 
-elif [[ $IS_UBUNTU_HECTOR == true ]]; then
+elif [[ $WHICH_LINUX == "hector" ]]; then
 
     force_color_prompt=yes
     source /etc/skel/.bashrc
@@ -56,7 +54,7 @@ elif [[ $IS_UBUNTU_HECTOR == true ]]; then
     ANDROID_HOME=$HOME/usr/android-sdk/sdk
     PATH="$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH"
 
-elif [[ $IS_DREAMHOST_KLEEMANN == true ]]; then
+elif [[ $WHICH_LINUX == "dreamhost" ]]; then
 
     export PATH=$HOME/bin:$HOME/opt/python-2.7.14/bin:$PATH
     umask 002
