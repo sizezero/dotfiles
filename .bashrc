@@ -23,6 +23,10 @@ if [[ -f $HOME/IS_DREAMHOST_KLEEMANN ]]; then
     export WHICH_LINUX=dreamhost
 fi
 
+if [[ -f $HOME/.IS_STEADY ]]; then
+    export WHICH_LINUX=steady
+fi
+
 if [[ $WHICH_LINUX == "scharp" ]]; then
 
     source /usr/local/admin/defaults/bashrc.sles
@@ -53,6 +57,17 @@ elif [[ $WHICH_LINUX == "hector" ]]; then
     # add android
     ANDROID_HOME=$HOME/usr/android-sdk/sdk
     PATH="$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH"
+
+elif [[ $WHICH_LINUX == "steady" ]]; then
+
+    # older ubuntu
+    force_color_prompt=yes
+    source /etc/skel/.bashrc
+
+    # set PATH so it includes user's private bin if it exists
+    if [ -d "$HOME/bin" ] ; then
+	PATH="$HOME/bin:$PATH"
+    fi
 
 elif [[ $WHICH_LINUX == "dreamhost" ]]; then
 
