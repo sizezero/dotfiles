@@ -6,8 +6,10 @@ if [[ $# -ne 1 || ! $1 =~ ^(on|off)$ ]]; then
     exit 1
 fi
 
-if [[ "$1" == "on" ]]; then
-    echo performance | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
-elif [[ "$1" == "off" ]]; then
-    echo powersave | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+
+V='performance'
+if [[ "$1" == "off" ]]; then
+    V='powersave'
 fi
+
+echo $V | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
