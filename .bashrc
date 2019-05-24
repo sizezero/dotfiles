@@ -60,6 +60,9 @@ elif [[ $WHICH_LINUX == "hector" ]]; then
     ANDROID_HOME=$HOME/usr/android-sdk/sdk
     PATH="$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH"
 
+    # taken from default ubuntu and added newline and strange unicode
+    PS1='╭─\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\n╰─\$ '
+
 elif [[ $WHICH_LINUX == "steady" ]]; then
 
     # older ubuntu
