@@ -44,7 +44,8 @@ elif [[ $WHICH_LINUX == "termux" ]]; then
     # prompt taken from ubuntu
     #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
     # above doesn't work so trying a dirt simple one
-    PS1='\w\\$ '
+    #PS1='\w\\$ '
+    PS1='╭─\u@\h: \w\n╰─# '
 
 elif [[ $WHICH_LINUX == "hector" ]]; then
 
