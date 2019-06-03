@@ -1,11 +1,8 @@
 
 export WHICH_LINUX=generic
 
-if [[ -f /etc/resolv.conf ]]; then
-    grep -q '^domain pc.scharp.org$' /etc/resolv.conf
-    if [[ $? -eq 0 ]]; then
-	export WHICH_LINUX=scharp
-    fi
+if [[ -d /scharp/QUALITY && -d /scharp/xapps ]]; then
+    export WHICH_LINUX=scharp
 fi
 
 if [[ -d /data/data/com.termux ]]; then
