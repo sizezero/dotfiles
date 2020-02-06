@@ -31,6 +31,9 @@ if [[ $WHICH_LINUX == "scharp" ]]; then
     export JAVA_HOME=/scharp/xapps/fw/share/jdk
     export PATH=$HOME/bin/linux:$HOME/bin:$JAVA_HOME/bin:/scharp/xapps/fw/bin:$HOME/local/bin:$PATH
 
+
+    export INSTALL4J_JAVA_HOME=/scharp/xapps/fw/share/jdk1.8.0_144
+
     PS1='╭─\u@\h: \w\n╰─# '
 
     umask 022
