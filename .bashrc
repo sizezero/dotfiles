@@ -12,7 +12,13 @@ fi
 if [[ -f /etc/os-release ]]; then
     grep -q '^ID=ubuntu$' /etc/os-release
     if [[ $? -eq 0 && $(hostname) == 'hector' ]]; then
-	export WHICH_LINUX=hector
+        if [[ $(whoami) == 'kleemann' ]]; then
+            export WHICH_LINUX=hector-robert
+        elif [[ $(whoami) == 'work' ]]; then
+            export WHICH_LINUX=hector-work
+        else
+            export WHICH_LINUX=hector
+        fi
     fi
 fi
 
@@ -47,7 +53,7 @@ elif [[ $WHICH_LINUX == "termux" ]]; then
     #PS1='\w\\$ '
     PS1='╭─\u@\h: \w\n╰─# '
 
-elif [[ $WHICH_LINUX == "hector" ]]; then
+elif [[ $WHICH_LINUX == "hector-robert" ]]; then
 
     force_color_prompt=yes
     source /etc/skel/.bashrc
@@ -63,6 +69,21 @@ elif [[ $WHICH_LINUX == "hector" ]]; then
 
     # taken from default ubuntu and added newline and strange unicode
     PS1='╭─\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\n╰─\$ '
+
+elif [[ $WHICH_LINUX == "hector-work" ]]; then
+
+    force_color_prompt=yes
+    source /etc/skel/.bashrc
+
+    # set PATH so it includes user's private bin if it exists
+    if [ -d "$HOME/bin" ] ; then
+	PATH="$HOME/bin:$PATH"
+    fi
+
+    # taken from default ubuntu and added newline and strange unicode
+    PS1='╭─\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\n╰─\$ '
+
+    M=kleemann@maggot.pc.scharp.org
 
 elif [[ $WHICH_LINUX == "steady" ]]; then
 
