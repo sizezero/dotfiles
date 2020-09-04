@@ -44,6 +44,8 @@ if [[ $WHICH_LINUX == "scharp" ]]; then
 
     umask 022
 
+    export TERM=xterm-256color
+
 elif [[ $WHICH_LINUX == "termux" ]]; then
 
     export PATH=$HOME/bin:$PATH
