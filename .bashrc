@@ -1,11 +1,8 @@
 
 export WHICH_LINUX=generic
 
-if [[ -f /etc/resolv.conf ]]; then
-    grep -q '^domain pc.scharp.org$' /etc/resolv.conf
-    if [[ $? -eq 0 ]]; then
-	export WHICH_LINUX=scharp
-    fi
+if [[ -d /scharp/QUALITY && -d /scharp/xapps ]]; then
+    export WHICH_LINUX=scharp
 fi
 
 if [[ -d /data/data/com.termux ]]; then
@@ -15,7 +12,13 @@ fi
 if [[ -f /etc/os-release ]]; then
     grep -q '^ID=ubuntu$' /etc/os-release
     if [[ $? -eq 0 && $(hostname) == 'hector' ]]; then
-	export WHICH_LINUX=hector
+        if [[ $(whoami) == 'kleemann' ]]; then
+            export WHICH_LINUX=hector-robert
+        elif [[ $(whoami) == 'work' ]]; then
+            export WHICH_LINUX=hector-work
+        else
+            export WHICH_LINUX=hector
+        fi
     fi
 fi
 
@@ -34,9 +37,14 @@ if [[ $WHICH_LINUX == "scharp" ]]; then
     export JAVA_HOME=/scharp/xapps/fw/share/jdk
     export PATH=$HOME/bin/linux:$HOME/bin:$JAVA_HOME/bin:/scharp/xapps/fw/bin:$HOME/local/bin:$PATH
 
+
+    export INSTALL4J_JAVA_HOME=/scharp/xapps/fw/share/jdk1.8.0_144
+
     PS1='╭─\u@\h: \w\n╰─# '
 
     umask 022
+
+    export TERM=xterm-256color
 
 elif [[ $WHICH_LINUX == "termux" ]]; then
 
@@ -44,9 +52,10 @@ elif [[ $WHICH_LINUX == "termux" ]]; then
     # prompt taken from ubuntu
     #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
     # above doesn't work so trying a dirt simple one
-    PS1='\w\\$ '
+    #PS1='\w\\$ '
+    PS1='╭─\u@\h: \w\n╰─# '
 
-elif [[ $WHICH_LINUX == "hector" ]]; then
+elif [[ $WHICH_LINUX == "hector-robert" ]]; then
 
     force_color_prompt=yes
     source /etc/skel/.bashrc
@@ -65,6 +74,23 @@ elif [[ $WHICH_LINUX == "hector" ]]; then
 
     test -r ~/.dir_colors && eval $(dircolors ~/.dir_colors)
 
+elif [[ $WHICH_LINUX == "hector-work" ]]; then
+
+    force_color_prompt=yes
+    source /etc/skel/.bashrc
+
+    # set PATH so it includes user's private bin if it exists
+    if [ -d "$HOME/bin" ] ; then
+	PATH="$HOME/bin:$PATH"
+    fi
+
+    # taken from default ubuntu and added newline and strange unicode
+    PS1='╭─\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\n╰─\$ '
+
+    test -r ~/.dir_colors && eval $(dircolors ~/.dir_colors)
+
+    M=kleemann@maggot.pc.scharp.org
+    
 elif [[ $WHICH_LINUX == "steady" ]]; then
 
     # older ubuntu
