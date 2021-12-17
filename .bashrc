@@ -12,7 +12,7 @@ fi
 if [[ -f /etc/os-release ]]; then
     grep -q '^ID=ubuntu$' /etc/os-release
     if [[ $? -eq 0 && $(hostname) == 'hector' ]]; then
-        if [[ $(whoami) == 'kleemann' ]]; then
+        if [[ $(whoami) == 'robert' ]]; then
             export WHICH_LINUX=hector-robert
         elif [[ $(whoami) == 'work' ]]; then
             export WHICH_LINUX=hector-work
