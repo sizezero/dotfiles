@@ -74,6 +74,8 @@ elif [[ $WHICH_LINUX == "hector-robert" ]]; then
 
     test -r ~/.dir_colors && eval $(dircolors ~/.dir_colors)
 
+    JAVA_HOME=/usr/lib/jvm/default-java
+
 elif [[ $WHICH_LINUX == "hector-work" ]]; then
 
     force_color_prompt=yes
