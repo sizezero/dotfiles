@@ -13,7 +13,7 @@
   "filterLinkHints": false,
   "waitForEnterForFilteredHints": true,
   "hideHud": false,
-  "keyMappings": "# Insert your preferred key mappings here.\nunmapAll\nmap f LinkHints.activateMode\nmap F LinkHints.activateModeToOpenInNewTab",
+  "keyMappings": "# Insert your preferred key mappings here.\nunmapAll\nmap f LinkHints.activateMode\nmap F LinkHints.activateModeToOpenInNewTab\nmap j LinkHints.activateModeToOpenInNewTab\nmap d passNextKey",
   "linkHintCharacters": "sadfjklewcmpgh",
   "linkHintNumbers": "0123456789",
   "newTabUrl": "about:newtab",
