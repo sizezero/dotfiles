@@ -8,6 +8,10 @@
     {
       "pattern": "https?://drive.google.com/*",
       "passKeys": ""
+    },
+    {
+      "pattern": "https?://docs.google.com/*",
+      "passKeys": ""
     }
   ],
   "filterLinkHints": false,
