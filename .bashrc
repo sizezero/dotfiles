@@ -79,6 +79,9 @@ elif [[ $WHICH_LINUX == "hector-robert" ]]; then
 
     JAVA_HOME=/usr/lib/jvm/default-java
 
+    # RUST
+    . "$HOME/.cargo/env"
+
 elif [[ $WHICH_LINUX == "hector-work" ]]; then
 
     force_color_prompt=yes
