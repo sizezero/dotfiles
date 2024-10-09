@@ -114,7 +114,7 @@
 ; would this not be the default?
 (menu-bar-enable-clipboard)
 (setq x-select-enable-clipboard t)
-(setq interprogram-paste-function 'x-cut-buffer-or-selection-value)
+(setq interprogram-paste-function 'x-selection-value)
 
 (setq grep-find-command "find . -type f -not -path '*/.svn/*' -not -path '*/tags/*' -not -path '*/.metadata/*' -print0 | xargs -0 -e grep -n -i -e")
 
