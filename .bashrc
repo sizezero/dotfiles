@@ -129,3 +129,7 @@ fi
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 export PATH=$PATH:$HOME/common-bin
+
+# not all distributions have X running but, if they do, handle cut and paste
+alias "c=xclip -selection clipboard"
+alias "v=xclip -o -selection clipboard"
