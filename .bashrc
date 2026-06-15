@@ -19,6 +19,8 @@ if [[ -f /etc/os-release ]]; then
         else
             export WHICH_LINUX=hector
         fi
+    elif [[ $? -eq 0 && $(hostname) == 'hector' ]]; then
+        export WHICH_LINUX=old-hector
     fi
 fi
 
@@ -116,6 +118,12 @@ elif [[ $WHICH_LINUX == "dreamhost" ]]; then
     umask 002
     PS1='[\h] \w\\$ '
     export TMPDIR="$HOME/tmp"
+
+elif [[ $WHICH_LINUX == "old-hector" ]]; then
+
+    LESSCHARSET=utf8
+    PS1='[\u@\h $(tty | tail -c2) \W]\$ '
+    setterm –blank 5
 
 else
     # generic distribution
