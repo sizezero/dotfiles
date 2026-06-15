@@ -19,8 +19,6 @@ if [[ -f /etc/os-release ]]; then
         else
             export WHICH_LINUX=hector
         fi
-    elif [[ $? -eq 0 && $(hostname) == 'hector' ]]; then
-        export WHICH_LINUX=old-hector
     fi
 fi
 
@@ -30,6 +28,10 @@ fi
 
 if [[ -f $HOME/.IS_STEADY ]]; then
     export WHICH_LINUX=steady
+fi
+
+if [[ $? -eq 0 && $(hostname) == 'hector' ]]; then
+    export WHICH_LINUX=old-hector
 fi
 
 if [[ $WHICH_LINUX == "scharp" ]]; then
