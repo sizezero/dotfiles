@@ -24,19 +24,17 @@ case "$CHOICE" in
         ;;
     do)
         echo "do: pacman -Syu"
-          
         pacman -Syu
         ;;
     post1)
-        echo "post:"
-        CMD="fgrep $(date +%F) /var/log/pacman.log"
-        echo "$CMD"
-        $($CMD)
+        CMD="grep -F $(date +%F) /var/log/pacman.log"
+        echo "post1: $CMD"
+        eval $CMD
         ;;
     post2)
         CMD="find /etc -name '*.pacnew' -o -name '*.pacsave'"
-        echo "$CMD"
-        $($CMD)
+        echo "post2: $CMD"
+        eval $CMD
         ;;
     *)
         help
