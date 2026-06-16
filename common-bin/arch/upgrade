@@ -1,7 +1,7 @@
 #!/bin/bash
 
 help() {
-    echo "upgrade ( pre | do | post )"
+    echo "upgrade ( pre | do | post1 | post2 )"
     exit 0
 }
 
@@ -27,11 +27,13 @@ case "$CHOICE" in
           
         pacman -Syu
         ;;
-    post)
+    post1)
         echo "post:"
         CMD="fgrep $(date +%F) /var/log/pacman.log"
         echo "$CMD"
         $($CMD)
+        ;;
+    post2)
         CMD="find /etc -name '*.pacnew' -o -name '*.pacsave'"
         echo "$CMD"
         $($CMD)
