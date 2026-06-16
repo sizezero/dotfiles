@@ -1,0 +1,42 @@
+#!/bin/bash
+
+help() {
+    echo "upgrade ( pre | do | post )"
+    exit 0
+}
+
+if [ $# == "0" ]; then
+    help
+fi
+
+USER=$(whoami)
+if [ $USER != "root" ]; then
+   echo "only root may run this program"
+   exit 1
+fi
+
+CHOICE="$1"
+
+case "$CHOICE" in
+    pre)
+        echo "pre: checkupdates"
+        checkupdates
+        ;;
+    do)
+        echo "do: pacman -Syu"
+          
+        pacman -Syu
+        ;;
+    post)
+        echo "post:"
+        CMD="fgrep $(date +%F) /var/log/pacman.log"
+        echo "$CMD"
+        $($CMD)
+        CMD="find /etc -name '*.pacnew' -o -name '*.pacsave'"
+        echo "$CMD"
+        $($CMD)
+        ;;
+    *)
+        help
+        ;;
+esac
