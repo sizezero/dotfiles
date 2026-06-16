@@ -127,6 +127,13 @@ elif [[ $WHICH_LINUX == "old-hector" ]]; then
     PS1='[\u@\h $(tty | tail -c2) \W]\$ '
     setterm –blank 5
 
+    # set PATH so it includes user's private bin if it exists
+    if [ -d "$HOME/bin" ] ; then
+	PATH="$HOME/bin:$PATH"
+    fi
+
+    export PATH="$PATH:$HOME/common-bin/arch"
+
 else
     # generic distribution
 
