@@ -124,7 +124,10 @@ elif [[ $WHICH_LINUX == "dreamhost" ]]; then
 elif [[ $WHICH_LINUX == "old-hector" ]]; then
 
     LESSCHARSET=utf8
-    PS1='[\u@\h $(tty | tail -c2) \W]\$ '
+#    PS1='[\u@\h $(tty | tail -c2) \W]\$ '
+    PS1='╭─\[\u@\h: T$(tty | tail -c2) \w\a\]\n╰─\$ '
+#    PS1='╭─\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\n╰─\$ '
+
     setterm –blank 5
 
     # set PATH so it includes user's private bin if it exists
