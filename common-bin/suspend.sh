@@ -2,7 +2,7 @@
 
 if [[ $# -ne 1 || ! $1 =~ ^(on|off)$ ]]; then
     echo "command takes single argument"
-    echo "hibernate.sh ( on | off ) "
+    echo "suspend.sh ( on | off ) "
     exit 1
 fi
 
@@ -16,7 +16,7 @@ case "$1" in
     ;;
 
     *)
-        echo "single argument must be on or offfo"
+        echo "single argument must be on or off"
     ;;
     
 esac
