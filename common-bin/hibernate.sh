@@ -8,11 +8,11 @@ fi
 
 case "$1" in
     off)
-        sudo systemctl mask hibernate.target hybrid-sleep.target suspend-then-hibernate.target
+        sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target suspend-then-hibernate.target
     ;;
 
     on)
-        sudo systemctl unmask hibernate.target hybrid-sleep.target suspend-then-hibernate.target
+        sudo systemctl unmask sleep.target suspend.target hibernate.target hybrid-sleep.target suspend-then-hibernate.target
     ;;
 
     *)
