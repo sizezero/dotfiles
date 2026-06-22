@@ -25,11 +25,15 @@ check_symlink() {
 case "$1" in
     off)
         sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target suspend-then-hibernate.target
+        # above command does not always work; trying the below
+        sudo systemctl daemon-reload
         exit 0
     ;;
 
     on)
         sudo systemctl unmask sleep.target suspend.target hibernate.target hybrid-sleep.target suspend-then-hibernate.target
+        # above command does not always work; trying the below
+        sudo systemctl daemon-reload
         exit 0
     ;;
 
