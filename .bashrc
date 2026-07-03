@@ -126,7 +126,7 @@ elif [[ $WHICH_LINUX == "old-hector" ]]; then
 
     LESSCHARSET=utf8
 #    PS1='[\u@\h $(tty | tail -c2) \W]\$ '
-    PS1='╭─\[\u@\h: T$(tty | tail -c2) \w]\n╰─\$ '
+    PS1='╭─\[\[\033[01;32m\]\u@\h\[\033[00m\]: T$(tty | tail -c2) \[\033[01;34m\]\w\[\033[00m\]]\n╰─\$ '
 #    PS1='╭─\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\n╰─\$ '
 
     setterm --blank=5
@@ -137,6 +137,9 @@ elif [[ $WHICH_LINUX == "old-hector" ]]; then
     fi
 
     export PATH="$PATH:$HOME/common-bin/arch"
+
+    alias ls='ls --color=auto'
+    alias grep='grep --color=auto'
 
 else
     # generic distribution
