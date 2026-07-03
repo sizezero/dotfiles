@@ -79,7 +79,8 @@ elif [[ $WHICH_LINUX == "hector-robert" ]]; then
     # taken from default ubuntu and added newline and strange unicode
     PS1='╭─\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\n╰─\$ '
 
-    test -r ~/.dir_colors && eval $(dircolors ~/.dir_colors)
+    # renamed .dir_colors to .dircolors so it should be pickup up by /etc/skel/.bashrc
+    #test -r ~/.dir_colors && eval $(dircolors ~/.dir_colors)
 
     JAVA_HOME=/usr/lib/jvm/default-java
 
