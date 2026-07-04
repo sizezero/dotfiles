@@ -27,14 +27,14 @@
 
 ;;; cperl-mode is preferred to perl-mode
 ;;; "Brevity is the soul of wit" <foo at acm.org>
-(defalias 'perl-mode 'cperl-mode)
+;;(defalias 'perl-mode 'cperl-mode)
 
 ;; default cperl indentation seems to be 2
-(setq cperl-indent-level 4
-      cperl-close-paren-offset -4
-      cperl-continued-statement-offset 4
-      cperl-indent-parens-as-block t
-      cperl-tab-always-indent t)
+;;(setq cperl-indent-level 4
+;;      cperl-close-paren-offset -4
+;;      cperl-continued-statement-offset 4
+;;      cperl-indent-parens-as-block t
+;;      cperl-tab-always-indent t)
 
 ;; my buffer menus
 
@@ -92,6 +92,8 @@
 
 (global-set-key [home] 'beginning-of-line)
 (global-set-key [end] 'end-of-line)
+(global-set-key (kbd "C-<right>") 'forward-word)
+(global-set-key (kbd "C-<left>") 'backward-word)
 (global-set-key [f1] 'buffer-menu)
 (global-set-key [f2] 'buffer-menu-files-only)
 (global-set-key [f4] 'goto-line)
