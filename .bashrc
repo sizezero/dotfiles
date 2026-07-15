@@ -124,6 +124,8 @@ elif [[ $WHICH_LINUX == "dreamhost" ]]; then
 
 elif [[ $WHICH_LINUX == "old-hector" ]]; then
 
+    source /etc/bash.bashrc
+
     LESSCHARSET=utf8
 #    PS1='[\u@\h $(tty | tail -c2) \W]\$ '
     PS1='╭─\[\[\033[01;32m\]\u@\h\[\033[00m\]: T$(tty | tail -c2) \[\033[01;34m\]\w\[\033[00m\]]\n╰─\$ '
@@ -138,8 +140,12 @@ elif [[ $WHICH_LINUX == "old-hector" ]]; then
 
     export PATH="$PATH:$HOME/common-bin/arch"
 
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
     alias grep='grep --color=auto'
+
+    # make less more friendly for non-text input files, see lesspipe(1)
+    [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 else
     # generic distribution
