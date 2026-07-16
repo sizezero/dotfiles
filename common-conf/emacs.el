@@ -1,4 +1,7 @@
 
+;; add the following line to your ~/.emacs file
+;; (load-file "~/common-conf/emacs.el")
+
 ;; M-x eval-buffer to reload
 
 
