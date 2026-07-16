@@ -88,6 +88,14 @@
 
 ;; macros
 
+;; need this when running from a bare terminal
+(unless (display-graphic-p)
+  (progn
+    (define-key input-decode-map "\e[1;5C" [(control right)])
+    (define-key input-decode-map "\e[1;5D" [(control left)])
+    (define-key input-decode-map "\e[1;5E" [(control up)])
+    ))
+
 ;; some handy keys
 
 (global-set-key [home] 'beginning-of-line)
