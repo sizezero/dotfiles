@@ -135,17 +135,3 @@
 ;(load "/home/kleemann/.emacs.d/groovy-mode.el")
 ;(add-to-list 'auto-mode-alist '("\.groovy$" . groovy-mode))
 ;(add-to-list 'interpreter-mode-alist '("groovy" . groovy-mode))
-
-(custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- '(inhibit-startup-screen t)
- '(org-latex-to-pdf-process (quote ("/usr/local/apps/texlive/2009/bin/x86_64-linux/pdflatex -interaction nonstopmode %s" "/usr/local/apps/texlive/2009/bin/x86_64-linux/pdflatex -interaction nonstopmode %s"))))
-(custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- )
