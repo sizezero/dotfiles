@@ -138,3 +138,10 @@
 ;(load "/home/kleemann/.emacs.d/groovy-mode.el")
 ;(add-to-list 'auto-mode-alist '("\.groovy$" . groovy-mode))
 ;(add-to-list 'interpreter-mode-alist '("groovy" . groovy-mode))
+
+(defun my-insert-date ()
+  "Insert current date in YYYY-MM-DD format."
+  (interactive)
+  (insert (format-time-string "%Y-%m-%d")))
+
+(global-set-key (kbd "C-c i d") 'my-insert-date)
