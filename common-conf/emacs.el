@@ -9,7 +9,10 @@
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
-(package-initialize)
+;;
+;; supposedly this is only needed for emacs 26 and older
+;;
+;; (package-initialize)
 
 (setq debug-on-error t)
 
@@ -27,17 +30,6 @@
 (setq c-basic-offset 2)
 (setq tab-width 4)
 (setq-default indent-tabs-mode nil)
-
-;;; cperl-mode is preferred to perl-mode
-;;; "Brevity is the soul of wit" <foo at acm.org>
-;;(defalias 'perl-mode 'cperl-mode)
-
-;; default cperl indentation seems to be 2
-;;(setq cperl-indent-level 4
-;;      cperl-close-paren-offset -4
-;;      cperl-continued-statement-offset 4
-;;      cperl-indent-parens-as-block t
-;;      cperl-tab-always-indent t)
 
 ;; my buffer menus
 
@@ -97,6 +89,8 @@
     (define-key input-decode-map "\e[1;5C" [(control right)])
     (define-key input-decode-map "\e[1;5D" [(control left)])
     (define-key input-decode-map "\e[1;5E" [(control up)])
+    (define-key input-decode-map "\e[1;5H" [(control home)])
+    (define-key input-decode-map "\e[1;5F" [(control end)])
     ))
 
 ;; some handy keys
@@ -131,13 +125,7 @@
 
 (setq grep-find-command "find . -type f -not -path '*/.svn/*' -not -path '*/tags/*' -not -path '*/.metadata/*' -print0 | xargs -0 -e grep -n -i -e")
 
-; load "emacs speaks statistics" package
-;(load "/usr/share/emacs/site-lisp/emacs-ess/ess-site.el")
-
-; load groovy mode
-;(load "/home/kleemann/.emacs.d/groovy-mode.el")
-;(add-to-list 'auto-mode-alist '("\.groovy$" . groovy-mode))
-;(add-to-list 'interpreter-mode-alist '("groovy" . groovy-mode))
+; easy way to add dates to log files
 
 (defun my-insert-date ()
   "Insert current date in YYYY-MM-DD format."
@@ -145,3 +133,7 @@
   (insert (format-time-string "%Y-%m-%d")))
 
 (global-set-key (kbd "C-c i d") 'my-insert-date)
+
+; make M-q only have one space between sentences
+
+(setq sentence-end-double-space nil)
