@@ -147,6 +147,9 @@ elif [[ $WHICH_LINUX == "old-hector" ]]; then
     # make less more friendly for non-text input files, see lesspipe(1)
     [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
+    # needed for ssh-agent to work
+    export SSH_AUTH_SOCK=${XDG_RUNTIME_DIR}/ssh-agent.socket
+
 else
     # generic distribution
 
