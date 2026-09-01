@@ -20,7 +20,7 @@ CHOICE="$1"
 case "$CHOICE" in
     pre)
         echo "pre: checkupdates"
-        checkupdates
+        checkupdates | less -R
         ;;
     do)
         echo "do: pacman -Syu"
