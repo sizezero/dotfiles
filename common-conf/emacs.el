@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 
 ;; add the following line to your ~/.emacs file
 ;; (load-file "~/common-conf/emacs.el")
