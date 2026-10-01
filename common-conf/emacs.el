@@ -94,6 +94,23 @@
     (define-key input-decode-map "\e[1;5F" [(control end)])
     ))
 
+;; newer way to switch between the two most recent files
+
+(defun my-toggle-recent-files ()
+  "Toggle between the two most recently used file-visiting buffers."
+  (interactive)
+  (let ((matching-buffer nil)
+        (buffers (buffer-list)))
+    ;; The first element in (buffer-list) is the current buffer.
+    ;; We skip it and look for the next most recent buffer that visits a file.
+    (dolist (buf (cdr buffers))
+      (when (and (null matching-buffer)
+                 (buffer-file-name buf))
+        (setq matching-buffer buf)))
+    (if matching-buffer
+        (switch-to-buffer matching-buffer)
+      (message "No other file-visiting buffer found."))))
+
 ;; some handy keys
 
 (global-set-key [home] 'beginning-of-line)
@@ -102,6 +119,7 @@
 (global-set-key (kbd "C-<left>") 'backward-word)
 (global-set-key [f1] 'buffer-menu)
 (global-set-key [f2] 'buffer-menu-files-only)
+(global-set-key (kbd "<f3>") 'my-toggle-recent-files)
 (global-set-key [f4] 'goto-line)
 (global-set-key [f5] 'next-error)
 (global-set-key [S-f5] 'previous-error)
