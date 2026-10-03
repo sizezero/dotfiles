@@ -126,6 +126,12 @@
 (global-set-key [f6] 'buffer-menu)
 (global-set-key [f7] 'buffer-menu-files-only)
 
+; fix jinx keystrokes
+(with-eval-after-load 'jinx-autoloads
+  (keymap-global-set "M-$"  #'jinx-correct)
+  (keymap-global-set "<f9>" #'jinx-correct-all)
+)
+
 ;; We never use C-z to suspend emacs so use it for the more intuitive
 ;; "undo command"
 (global-set-key "\C-z" 'undo)
