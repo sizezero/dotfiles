@@ -180,10 +180,6 @@ elif [[ $WHICH_LINUX == "bibi" ]]; then
     # update the values of LINES and COLUMNS.
     shopt -s checkwinsize
 
-    # If set, the pattern "**" used in a pathname expansion context will
-    # match all files and zero or more directories and subdirectories.
-    #shopt -s globstar
-
     # make less more friendly for non-text input files, see lesspipe(1)
     [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
@@ -273,6 +269,8 @@ elif [[ $WHICH_LINUX == "bibi" ]]; then
 
     # custom stuff for bibi
 
+    # auto detection of color prompt isn't working
+    color_prompt=yes
     if [ "$color_prompt" = yes ]; then
         PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
     else
