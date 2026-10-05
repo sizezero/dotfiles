@@ -269,6 +269,8 @@ elif [[ $WHICH_LINUX == "bibi" ]]; then
 
     # custom stuff for bibi
 
+    setterm --blank=5
+
     # auto detection of color prompt isn't working
     color_prompt=yes
     if [ "$color_prompt" = yes ]; then
