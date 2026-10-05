@@ -269,7 +269,8 @@ elif [[ $WHICH_LINUX == "bibi" ]]; then
 
     # custom stuff for bibi
 
-    setterm --blank=5
+    # this seems to mess with resuming from suspend
+    #setterm --blank=5
 
     # auto detection of color prompt isn't working
     color_prompt=yes
@@ -293,6 +294,9 @@ elif [[ $WHICH_LINUX == "bibi" ]]; then
     if [ -d "$HOME/bin" ] ; then
 	PATH="$HOME/bin:$PATH"
     fi
+
+    # needed for ssh-agent to work
+    export SSH_AUTH_SOCK=${XDG_RUNTIME_DIR}/ssh-agent.socket
 
     # TODO add more complicated stuff once this works
 
