@@ -233,7 +233,7 @@ elif [[ $WHICH_LINUX == "bibi" ]]; then
         #alias dir='dir --color=auto'
         #alias vdir='vdir --color=auto'
 
-        #alias grep='grep --color=auto'
+        alias grep='grep --color=auto'
         #alias fgrep='fgrep --color=auto'
         #alias egrep='egrep --color=auto'
     fi
@@ -272,7 +272,7 @@ elif [[ $WHICH_LINUX == "bibi" ]]; then
     # auto detection of color prompt isn't working
     color_prompt=yes
     if [ "$color_prompt" = yes ]; then
-        PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+        PS1='╭─\[\[\033[01;32m\]\u@\h\[\033[00m\]: T$(tty | tail -c2) \[\033[01;34m\]\w\[\033[00m\]]\n╰─\$ '
     else
         PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
     fi
