@@ -297,9 +297,9 @@ elif [[ $WHICH_LINUX == "bibi" ]]; then
 
     # needed for ssh-agent to work
     export SSH_AUTH_SOCK=${XDG_RUNTIME_DIR}/ssh-agent.socket
-    # this causes a prompt at every login
-    #eval $(ssh-agent -s)
-    #ssh-add ~/.ssh/id_ed25519
+
+    bind '"\e[C": forward-word'
+    bind '"\e[D": backward-word'
 
 else
     # generic distribution
