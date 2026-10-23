@@ -88,14 +88,14 @@
 (unless (display-graphic-p)
   (progn
     (define-key input-decode-map "\e[1;5C" [(control right)])
-    (define-key input-decode-map "\e[C"    [(control right)])
+;;    (define-key input-decode-map "\e[C"    [(control right)])
     (define-key input-decode-map "\e[1;5D" [(control left)])
-    (define-key input-decode-map "\e[D"    [(control left)])
+;;    (define-key input-decode-map "\e[D"    [(control left)])
     (define-key input-decode-map "\e[1;5E" [(control up)])
     (define-key input-decode-map "\e[1;5H" [(control home)])
-    (define-key input-decode-map "\e[1~"   [(control home)])
+;;    (define-key input-decode-map "\e[1~"   [(control home)])
     (define-key input-decode-map "\e[1;5F" [(control end)])
-    (define-key input-decode-map "\e[4~"   [(control end)])
+;;    (define-key input-decode-map "\e[4~"   [(control end)])
     ))
 
 ;; newer way to switch between the two most recent files

@@ -298,8 +298,8 @@ elif [[ $WHICH_LINUX == "bibi" ]]; then
     # needed for ssh-agent to work
     export SSH_AUTH_SOCK=${XDG_RUNTIME_DIR}/ssh-agent.socket
 
-    bind '"\e[D": backward-word'
-    bind '"\e[C": forward-word'
+    #bind '"\e[D": backward-word'
+    #bind '"\e[C": forward-word'
 
 else
     # generic distribution
