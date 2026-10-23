@@ -9,4 +9,11 @@
 # shows all power devices
 # $ upower -e
 
-upower -i /org/freedesktop/UPower/devices/battery_sbs_12_000b
+D=/org/freedesktop/UPower/devices/battery_sbs_12_000b
+
+if [ -z "$1" ]; then
+    upower -i $D | grep 'percentage'
+else
+    # any argument shows the verbose output of upower
+    upower -i $D
+fi
