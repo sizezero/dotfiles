@@ -294,6 +294,7 @@ elif [[ $WHICH_LINUX == "bibi" ]]; then
     if [ -d "$HOME/bin" ] ; then
 	PATH="$HOME/bin:$PATH"
     fi
+    PATH="$HOME/common-bin/bibi:$PATH"
 
     # needed for ssh-agent to work
     export SSH_AUTH_SOCK=${XDG_RUNTIME_DIR}/ssh-agent.socket
